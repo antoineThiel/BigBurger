@@ -18,7 +18,6 @@ class _ErrorFetchedState extends State<ErrorFetched> {
         const Text("An error occured while fetching data, please retry"),
         ElevatedButton(
           onPressed: () {
-            print("pressed");
             context.read<BurgerListProvider>().getBurgers();
           },
           child: const Text("Retry"),

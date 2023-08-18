@@ -33,7 +33,6 @@ class _MenuPageState extends State<MenuPage> {
       body: SafeArea(
         child: Consumer<BurgerListProvider>(
           builder: (context, burgerListProvider, child) {
-            print(burgerListProvider.burgers.length);
             if (burgerListProvider.loading) {
               return const Center(
                 child: CircularProgressIndicator(),

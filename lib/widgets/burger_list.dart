@@ -14,18 +14,35 @@ class BurgerList extends StatefulWidget {
 class _BurgerListState extends State<BurgerList> {
   @override
   Widget build(BuildContext context) {
-    print("builded");
     return RefreshIndicator(
       onRefresh: () {
         return context.read<BurgerListProvider>().getBurgers();
       },
       child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
           itemCount: widget.burgers.length,
           itemBuilder: (context, index) {
             return ListTile(
+              leading: SizedBox(
+                width: 50,
+                height: 50,
+                child: Image.network(
+                  widget.burgers[index].imageUrl,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(
+                      Icons.broken_image,
+                      color: Colors.grey,
+                      size: 50,
+                    );
+                  },
+                ),
+              ),
               title: Text(widget.burgers[index].title),
-              subtitle: Text(widget.burgers[index].description),
-              trailing: Text(widget.burgers[index].price.toString()),
+              subtitle: Text(
+                widget.burgers[index].description,
+                overflow: TextOverflow.ellipsis,
+              ),
+              trailing: Text(widget.burgers[index].priceToEurStr()),
             );
           }),
     );

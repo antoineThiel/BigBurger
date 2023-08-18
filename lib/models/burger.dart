@@ -22,4 +22,8 @@ class Burger {
       price: json['price'],
     );
   }
+
+  priceToEurStr(){
+    return "${(price/100).toStringAsFixed(2)} €";
+  }
 }

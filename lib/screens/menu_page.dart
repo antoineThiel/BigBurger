@@ -16,8 +16,12 @@ class MenuPage extends StatefulWidget {
 class _MenuPageState extends State<MenuPage> {
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
-    context.read<BurgerListProvider>().getBurgers();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Provider.of<BurgerListProvider>(context, listen: false)
+          .getBurgers();
+    });
   }
 
   @override
@@ -29,22 +33,20 @@ class _MenuPageState extends State<MenuPage> {
       body: SafeArea(
         child: Consumer<BurgerListProvider>(
           builder: (context, burgerListProvider, child) {
+            print(burgerListProvider.burgers.length);
             if (burgerListProvider.loading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             }
-            return const Center(
-              child: Text("Hello"),
-            );
-            // if (burgerListProvider.hasException) {
-            //   return const Center(
-            //     child: ErrorFetched(),
-            //   );
-            // }
-            // else {
-            //   return BurgerList(burgers: burgerListProvider.burgers);
-            // }
+            if (burgerListProvider.hasException) {
+              return const Center(
+                child: ErrorFetched(),
+              );
+            }
+            else {
+              return BurgerList(burgers: burgerListProvider.burgers);
+            }
           },
         ),
       ),

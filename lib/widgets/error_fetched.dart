@@ -13,6 +13,7 @@ class _ErrorFetchedState extends State<ErrorFetched> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text("An error occured while fetching data, please retry"),
         ElevatedButton(

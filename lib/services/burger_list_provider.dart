@@ -10,12 +10,15 @@ class BurgerListProvider extends ChangeNotifier {
 
   Future<void> getBurgers() async {
     loading = true;
-    // try {
-    //   burgers = await apiService.getBurgers();
-    // } catch (e) {
-    //   hasException = true;
-    // }
-    hasException = true;
+    notifyListeners();
+
+    try {
+      burgers = await apiService.getBurgers();
+      hasException = false;
+    } catch (e) {
+      hasException = true;
+    }
+
     loading = false;
     notifyListeners();
   }

@@ -29,6 +29,14 @@ class _MenuPageState extends State<MenuPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("BIG BURGER"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, "/basket");
+            },
+            icon: const Icon(Icons.shopping_cart),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Consumer<BurgerListProvider>(
@@ -42,8 +50,7 @@ class _MenuPageState extends State<MenuPage> {
               return const Center(
                 child: ErrorFetched(),
               );
-            }
-            else {
+            } else {
               return BurgerList(burgers: burgerListProvider.burgers);
             }
           },

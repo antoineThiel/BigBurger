@@ -1,3 +1,4 @@
+import 'package:big_burger_ua/services/basket_provider.dart';
 import 'package:big_burger_ua/services/burger_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:big_burger_ua/screens/menu_page.dart';
@@ -18,8 +19,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ChangeNotifierProvider(
-        create: (context) => BurgerListProvider(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => BurgerListProvider(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => BasketProvider(),
+          ),
+        ],
         child: const MenuPage(),
       ),
     );

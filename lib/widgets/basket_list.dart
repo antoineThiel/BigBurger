@@ -23,29 +23,36 @@ class _BasketListState extends State<BasketList> {
         itemBuilder: (context, index) {
           Burger burger = burgers[index].keys.first;
           int burgerCount = burgers[index].values.first;
-          return ListTile(
-            leading: SizedBox(
-              width: 50,
-              height: 50,
-              child: Image.network(
-                burger.imageUrl,
-                errorBuilder: (context, error, stackTrace) {
-                  return const Icon(
-                    Icons.broken_image,
-                    color: Colors.grey,
-                    size: 50,
-                  );
-                },
+          return Column(
+            children: [
+              ListTile(
+                leading: SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: Image.network(
+                    burger.imageUrl,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(
+                        Icons.broken_image,
+                        color: Colors.grey,
+                        size: 50,
+                      );
+                    },
+                  ),
+                ),
+                title: Text(burger.title + " x" + burgerCount.toString()),
+                subtitle: Text(
+                  burger.description,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                trailing: Text(
+                    burger.priceToEurStr() + " x" + burgerCount.toString()),
+                onTap: () => () {},
               ),
-            ),
-            title: Text(burger.title + " x" + burgerCount.toString()),
-            subtitle: Text(
-              burger.description,
-              overflow: TextOverflow.ellipsis,
-            ),
-            trailing:
-                Text(burger.priceToEurStr() + " x" + burgerCount.toString()),
-            onTap: () => () {},
+              const Divider(
+                thickness: 1,
+              ),
+            ],
           );
         });
   }

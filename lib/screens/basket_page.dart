@@ -28,12 +28,11 @@ class _BasketPageState extends State<BasketPage> {
               child: Container(
                 height: 50,
                 width: MediaQuery.of(context).size.width,
-                color: Colors.blue,
+                color: Colors.green,
                 child: Center(
                   child: Text(
-                    "Commander pour " +
-                        context.read<BasketProvider>().getTotalPriceToEurStr(),
-                    style: TextStyle(
+                    "Commander pour ${context.read<BasketProvider>().getTotalPriceToEurStr()}",
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                     ),

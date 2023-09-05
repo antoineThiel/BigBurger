@@ -10,7 +10,6 @@ void main() {
   runApp(MyApp());
 }
 
-
 final GoRouter _router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
@@ -36,22 +35,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-    providers: [
-          ChangeNotifierProvider(
-            create: (context) => BurgerListProvider(),
-          ),
-          ChangeNotifierProvider(
-            create: (context) => BasketProvider(),
-          ),
-        ],
-    child: MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      title: 'BigBurger UA',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => BurgerListProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => BasketProvider(),
+        ),
+      ],
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'BigBurger UA',
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+        ),
+        routerConfig: _router,
       ),
-      routerConfig: _router,
-    ),
     );
   }
 }

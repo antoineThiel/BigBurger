@@ -24,28 +24,35 @@ class _BurgerListState extends State<BurgerList> {
           itemCount: widget.burgers.length,
           itemBuilder: (context, index) {
             Burger burger = widget.burgers[index];
-            return ListTile(
-              leading: SizedBox(
-                width: 50,
-                height: 50,
-                child: Image.network(
-                  burger.imageUrl,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(
-                      Icons.broken_image,
-                      color: Colors.grey,
-                      size: 50,
-                    );
-                  },
+            return Column(
+              children: [
+                ListTile(
+                  leading: SizedBox(
+                    width: 50,
+                    height: 50,
+                    child: Image.network(
+                      burger.imageUrl,
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Icon(
+                          Icons.broken_image,
+                          color: Colors.grey,
+                          size: 50,
+                        );
+                      },
+                    ),
+                  ),
+                  title: Text(burger.title),
+                  subtitle: Text(
+                    burger.description,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  trailing: Text(burger.priceToEurStr()),
+                  onTap: () => productDialog(burger),
                 ),
-              ),
-              title: Text(burger.title),
-              subtitle: Text(
-                burger.description,
-                overflow: TextOverflow.ellipsis,
-              ),
-              trailing: Text(burger.priceToEurStr()),
-              onTap: () => productDialog(burger),
+                const Divider(
+                  thickness: 1,
+                ),
+              ],
             );
           }),
     );

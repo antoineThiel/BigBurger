@@ -1,16 +1,15 @@
-# useradgent
+# UserAdgent
 
-A new Flutter project.
+Flutter app that presents a list of product and handle a basket of burger and side meals
 
-## Getting Started
+## Packages used
 
-This project is a starting point for a Flutter application.
+ - Provider for the state managment
+ - GoRouter for the navigation
 
-A few resources to get you started if this is your first Flutter project:
+## Developpement environnement
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter 3.7.9
+- Dart 2.19.6
+- Emulator Pixel 5 API 30
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

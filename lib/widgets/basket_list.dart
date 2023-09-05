@@ -40,7 +40,7 @@ class _BasketListState extends State<BasketList> {
                     },
                   ),
                 ),
-                title: Text(burger.title + " x" + burgerCount.toString()),
+                title: Text(burger.title),
                 subtitle: Text(
                   burger.description,
                   overflow: TextOverflow.ellipsis,

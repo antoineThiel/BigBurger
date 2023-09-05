@@ -9,7 +9,7 @@ class BasketProvider extends ChangeNotifier {
   void addBurger(Burger burger) {
     for (int i = 0; i < tmpQuantity; i++) {
       burgers.add(burger);
-      totalPrice += burger.price;
+      totalPrice += burger.priceToEur();
     }
     notifyListeners();
     print(burgers.length);
@@ -63,5 +63,23 @@ class BasketProvider extends ChangeNotifier {
   void resetTmpQuantity() {
     tmpQuantity = 1;
     notifyListeners();
+  }
+
+  List<Map<Burger, int>> getFilteredBurgers() {
+    List<Map<Burger, int>> filteredBurgers = [];
+    for (Burger burger in burgers) {
+      bool found = false;
+      for (Map<Burger, int> filteredBurger in filteredBurgers) {
+        if (filteredBurger.containsKey(burger)) {
+          filteredBurger[burger] = filteredBurger[burger]! + 1;
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        filteredBurgers.add({burger: 1});
+      }
+    }
+    return filteredBurgers;
   }
 }

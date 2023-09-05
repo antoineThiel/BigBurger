@@ -26,4 +26,8 @@ class Burger {
   priceToEurStr(){
     return "${(price/100).toStringAsFixed(2)} €";
   }
+
+  priceToEur(){
+    return (price/100);
+  }
 }

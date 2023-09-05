@@ -1,9 +1,8 @@
-import 'package:big_burger_ua/models/burger.dart';
-import 'package:big_burger_ua/services/api_service.dart';
 import 'package:big_burger_ua/services/burger_list_provider.dart';
 import 'package:big_burger_ua/widgets/burger_list.dart';
 import 'package:big_burger_ua/widgets/error_fetched.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class MenuPage extends StatefulWidget {
@@ -32,7 +31,7 @@ class _MenuPageState extends State<MenuPage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, "/basket");
+              context.go('/basket');
             },
             icon: const Icon(Icons.shopping_cart),
           ),
